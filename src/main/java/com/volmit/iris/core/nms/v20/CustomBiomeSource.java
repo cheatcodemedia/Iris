@@ -16,12 +16,14 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeSource;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.Climate;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_20_R1.CraftServer;
-import org.bukkit.craftbukkit.v1_20_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_20_R1.block.CraftBlock;
+import org.bukkit.craftbukkit.v1_20_R2.CraftServer;
+import org.bukkit.craftbukkit.v1_20_R2.CraftWorld;
+import org.bukkit.craftbukkit.v1_20_R2.block.CraftBiome;
+import org.bukkit.craftbukkit.v1_20_R2.block.CraftBlock;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -58,7 +60,7 @@ public class CustomBiomeSource extends BiomeSource {
                             .get(new ResourceLocation(engine.getDimension().getLoadKey() + ":" + j.getId()))).get()).get());
                 }
             } else {
-                b.add(CraftBlock.biomeToBiomeBase(registry, i.getVanillaDerivative()));
+                b.add(CraftBiome.bukkitToMinecraftHolder(i.getVanillaDerivative()));
             }
         }
 
@@ -119,6 +121,7 @@ public class CustomBiomeSource extends BiomeSource {
                 ((CraftWorld) engine.getWorld().realWorld()).getHandle().registryAccess().registry(Registries.BIOME).orElse(null),
                 engine).stream();
     }
+
     private KMap<String, Holder<Biome>> fillCustomBiomes(Registry<Biome> customRegistry, Engine engine) {
         KMap<String, Holder<Biome>> m = new KMap<>();
 
@@ -163,7 +166,7 @@ public class CustomBiomeSource extends BiomeSource {
             return customBiomes.get(ib.getCustomBiome(rng, x << 2, m, z << 2).getId());
         } else {
             org.bukkit.block.Biome v = ib.getSkyBiome(rng, x << 2, m, z << 2);
-            return CraftBlock.biomeToBiomeBase(biomeRegistry, v);
+            return CraftBiome.bukkitToMinecraftHolder(v);
         }
     }
 }

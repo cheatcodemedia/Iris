@@ -51,6 +51,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Represents a volume sender. A command sender with extra crap in it
@@ -407,6 +408,11 @@ public class VolmitSender implements CommandSender {
     @Override
     public Spigot spigot() {
         return s.spigot();
+    }
+
+    @Override
+    public @NotNull Component name() {
+        return s.name();
     }
 
     private String pickRandoms(int max, VirtualDecreeCommand i) {

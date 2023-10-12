@@ -18,6 +18,7 @@
 
 package com.volmit.iris.util.plugin;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.permissions.Permission;
@@ -66,6 +67,11 @@ public class CommandDummy implements CommandSender {
     @NotNull
     @Override
     public Spigot spigot() {
+        return null;
+    }
+
+    @Override
+    public @NotNull Component name() {
         return null;
     }
 
