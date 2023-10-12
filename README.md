@@ -1,3 +1,10 @@
+> ### ⚠️ This is a Fork of Iris
+> This is a fork of **Iris**. The upstream repository is [here](https://github.com/VolmitSoftware/Iris). Many of the
+> features in this fork are designed around our specific use case, and may not be suitable for your own. We recommend 
+> using the upstream repository if you are looking for a general purpose world generator.
+> No support will be provided for this fork, and we will not accept any pull requests. If you are looking for support
+> with Iris, please join the [Iris Discord](https://discord.com/invite/kApAavx).
+
 # Iris
 
 The master branch is for the latest version of minecraft.
